@@ -1,0 +1,8 @@
+/.env
+**/__pycache__/
+/.venv/
+/.idea
+/migrations/README
+/migrations/script.py.mako
+/.pytest_cache
+/.env-docker
