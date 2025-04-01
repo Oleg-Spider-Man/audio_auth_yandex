@@ -1,5 +1,4 @@
 import requests
-
 from my_app.config import YANDEX_CLIENT_ID, YANDEX_REDIRECT_URI, SECRET_YANDEX
 
 

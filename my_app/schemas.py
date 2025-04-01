@@ -1,12 +1,20 @@
 from pydantic import BaseModel
 
 
-class UserSchema(BaseModel):
+class YandexLogin(BaseModel):
+    redirect_url: str
+
+
+class User(BaseModel):
     email: str
     name: str
     role: str
 
 
-class UserUpdateSchema(BaseModel):
-    name: str | None = None
-    role: str | None = None
+class UserUpdate(BaseModel):
+    role: str
+
+
+class AudioFileResponse(BaseModel):
+    filename: str
+    path: str

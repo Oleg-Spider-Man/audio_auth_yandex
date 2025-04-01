@@ -9,6 +9,20 @@ from my_app.config import SECRET_KEY
 security = HTTPBearer()
 
 
+async def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    payload = jwt.decode(
+        credentials.credentials,
+        SECRET_KEY,
+        algorithms=["HS256"],
+        options={"verify_exp": False}
+    )
+    user_id = payload.get('sub')
+    if not user_id:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Пользователь не найден')
+
+    return user_id
+
+
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
         token = credentials.credentials
