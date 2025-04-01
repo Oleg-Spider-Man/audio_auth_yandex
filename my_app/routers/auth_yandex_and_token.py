@@ -1,16 +1,17 @@
 import uuid
 from urllib.parse import urlencode
-from fastapi import APIRouter, Request, Depends, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from jose import JWTError
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette import status
+from starlette.requests import Request
 from starlette.responses import JSONResponse
 from my_app import schemas
 from my_app.auth_.create_token import cr_token
 from my_app.auth_.verification_token import verify_token
 from my_app.config import YANDEX_CLIENT_ID, YANDEX_REDIRECT_URI
 from my_app.dependencies import get_async_session
-from my_app.operations.crud import create_user, get_user
+from my_app.operations.crud import get_user, create_user
 from my_app.operations.utils import exchange_code_token, get_user_data
 
 router = APIRouter(

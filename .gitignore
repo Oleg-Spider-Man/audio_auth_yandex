@@ -6,3 +6,5 @@
 /migrations/script.py.mako
 /.pytest_cache
 /.env-docker
+/audio_uploads/
+/data/
